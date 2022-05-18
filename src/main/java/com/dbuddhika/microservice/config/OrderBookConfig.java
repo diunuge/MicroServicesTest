@@ -18,25 +18,25 @@ public class OrderBookConfig {
   @Bean
   CommandLineRunner commandLineRunnerOrderBook(OrderBookRepository repository) {
     return args -> {
-      OrderBook ob = new OrderBook(1L, OrderBookStatus.OPEN);
-
-      Order order = Order
-          .builder()
-          .orderType(OrderType.MARKET_ORDER)
-          .quantity(200)
-          .entryDate(new Date())
-          .build();
-      ob.setOrders(List.of(order));
-
-      Execution execution = Execution
-          .builder()
-          .quantity(30)
-          .price(22.3)
-          .build();
-
-      ob.setExecutions(List.of(execution));
-
-      repository.saveAll(List.of(ob));
+//      OrderBook ob = new OrderBook(1L, OrderBookStatus.OPEN);
+//
+//      Order order = Order
+//          .builder()
+//          .orderType(OrderType.MARKET_ORDER)
+//          .quantity(200)
+//          .entryDate(new Date())
+//          .build();
+//      ob.setOrders(List.of(order));
+//
+//      Execution execution = Execution
+//          .builder()
+//          .quantity(30)
+//          .price(22.3)
+//          .build();
+//
+//      ob.setExecutions(List.of(execution));
+//
+//      repository.saveAll(List.of(ob));
     };
   }
 

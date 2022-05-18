@@ -9,7 +9,6 @@ import static org.mockito.Mockito.verify;
 
 import com.dbuddhika.microservice.model.Instrument;
 import com.dbuddhika.microservice.repository.InstrumentRepository;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +27,6 @@ class InstrumentServiceTest {
   private InstrumentService instrumentService;
 
   @BeforeEach
-  @Disabled
   void setUp() {
 
     instrumentService = new InstrumentService(repository);

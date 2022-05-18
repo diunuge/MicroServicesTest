@@ -13,9 +13,9 @@ public class InstrumentConfig {
   @Bean
   CommandLineRunner commandLineRunnerInstrument(InstrumentRepository repository) {
     return args -> {
-      Instrument defaultInstrument = new Instrument("Default Instrument");
+      //Instrument defaultInstrument = new Instrument("Default Instrument");
 
-      repository.saveAll(List.of(defaultInstrument));
+      //repository.saveAll(List.of(defaultInstrument));
     };
   }
 }
