@@ -1,5 +1,6 @@
 package com.dbuddhika.microservice.service;
 
+import com.dbuddhika.microservice.exception.ApiRequestException;
 import com.dbuddhika.microservice.model.Instrument;
 import com.dbuddhika.microservice.repository.InstrumentRepository;
 import java.util.List;
@@ -26,7 +27,7 @@ public class InstrumentService {
     Optional<Instrument> instrumentByName = instrumentRepository
         .findInstrumentByName(instrument.getName());
     if(instrumentByName.isPresent()) {
-      throw new IllegalArgumentException("instrument already exists"); //BadRequestException
+      throw new ApiRequestException("instrument already exists"); //BadRequestException
     }
     return instrumentRepository.save(instrument);
   }

@@ -1,5 +1,6 @@
 package com.dbuddhika.microservice.service;
 
+import com.dbuddhika.microservice.exception.OrderBookNotExistsException;
 import com.dbuddhika.microservice.model.Execution;
 import com.dbuddhika.microservice.model.Order;
 import com.dbuddhika.microservice.model.OrderBook;
@@ -42,7 +43,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     OrderBook orderBook = this.orderBookRepository
         .findById(orderBookId)
         .orElseThrow(
-            () -> new IllegalArgumentException("Order Book with id "+ orderBookId + " not exists")
+            () -> new OrderBookNotExistsException(orderBookId)
         );
 
     if(orderBook.getOrderBookStatus() == OrderBookStatus.CLOSE){
@@ -59,7 +60,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     OrderBook orderBook = orderBookRepository
         .findById(orderBookId)
         .orElseThrow(
-            () -> new IllegalArgumentException("Order Book with id "+ orderBookId + " not exists")
+            () -> new OrderBookNotExistsException(orderBookId)
         );
 
     return orderBook.getOrders();
@@ -72,7 +73,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     OrderBook orderBook = orderBookRepository
         .findById(orderBookId)
         .orElseThrow(
-            () -> new IllegalArgumentException("Order Book with id "+ orderBookId + " not exists")
+            () -> new OrderBookNotExistsException(orderBookId)
         );
 
     if(orderBook.getOrderBookStatus() == OrderBookStatus.CLOSE){
@@ -84,7 +85,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     }
     else if (order.getOrderType().equals(OrderType.LIMIT_ORDER)) {
 
-      if(order.getPrice()==null && order.getPrice()==0d){
+      if(order.getPrice()==null && order.getPrice()<=0.0d){
         throw new IllegalArgumentException("Order price has to be defined!");
       }
     }
@@ -103,7 +104,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     OrderBook orderBook = orderBookRepository
         .findById(orderBookId)
         .orElseThrow(
-            () -> new IllegalArgumentException("Order Book with id "+ orderBookId + " not exists")
+            () -> new OrderBookNotExistsException(orderBookId)
         );
 
     return orderBook.getExecutions();
@@ -115,7 +116,7 @@ public class OrderBookServiceImpl implements OrderBookService{
     OrderBook orderBook = orderBookRepository
         .findById(orderBookId)
         .orElseThrow(
-            () -> new IllegalArgumentException("Order Book with id "+ orderBookId + " not exists")
+            () -> new OrderBookNotExistsException(orderBookId)
         );
 
     orderBook.getExecutions().add(execution);

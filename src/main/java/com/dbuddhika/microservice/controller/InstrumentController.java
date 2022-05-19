@@ -23,8 +23,8 @@ public class InstrumentController {
   }
 
   @PostMapping
-  public void registerNewInstrument(@RequestBody Instrument instrument){
-    instrumentService.addInstrument(instrument);
+  public Instrument registerNewInstrument(@RequestBody Instrument instrument){
+    return instrumentService.addInstrument(instrument);
   }
 
   @DeleteMapping(path = "/{instrumentId}")
